@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+web/node_modules/
+web/dist/
+
+# Market data is large and re-downloadable; keep it out of git.
+data/raw/
+knowledge/pdfs/
+research/scratch/
+
+# Generated charts; the markdown/json reports are committed.
+reports/**/*.png

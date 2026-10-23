@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API (quantlab serve)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "quantlab.cli",
+      "args": ["serve"],
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Front (Vite)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm --prefix web run dev",
+      "cwd": "${workspaceFolder}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "API + Front",
+      "configurations": ["API (quantlab serve)", "Front (Vite)"],
+      "stopAll": true
+    }
+  ]
+}
