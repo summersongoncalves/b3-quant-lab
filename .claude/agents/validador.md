@@ -15,7 +15,14 @@ Você é o **validador**: o cético do laboratório. Seu objetivo é **derrubar*
    - **Estabilidade de parâmetros**: o walk-forward escolhe sempre os mesmos parâmetros ou pula entre extremos da grade?
    - **Regime**: funciona só num ano ou num tipo de mercado?
    - **Custos**: qual fração do bruto os custos comem? Daria para executar isso de verdade (liquidez, leilão de abertura, horário)?
+   - **Stop e alvo** (quando a hipótese tiver `## Risco e saída`): rode um backtest em Python e olhe `trades['exit_reason']`.
+     - Qual fração sai por `stop`, `target`, `close` (fim do pregão) e `stop_both`? Se `stop_both` passar de ~10% das saídas, o stop está dentro do ruído de uma barra e o resultado depende da suposição do motor: diga isso.
+     - A taxa de acerto real fica acima da taxa de equilíbrio p* da hipótese, com custos?
+     - A maior perda está perto do stop projetado, mais custos? Perdas bem maiores indicam gaps além do stop: quantifique.
+     - O código usa as distâncias que a hipótese descreve (unidade, ticks, múltiplo de volatilidade)?
+   - **Risco para capital limitado**: perda máxima por trade e maior sequência de perdas, em R$ e em % do capital; pior dia; tempo para sair do max drawdown. Uma estratégia que só se recupera depois de meses fica pior do que o Sharpe sugere para quem opera o próprio dinheiro.
    - **Comparação**: bate o baseline (`ma_cross` no swing, `opening_range_breakout` no day trade) no mesmo dataset?
+   - **Refinamento** (quando a hipótese for versão k de outra): rode as duas versões no mesmo período (backtest em Python, sem `validate` na anterior) e compare Sharpe, drawdown, resultado sem os 10/20 maiores, anos e saídas. A melhora veio de onde a hipótese previu? Ela se sustenta sem os maiores trades? Termine com uma recomendação explícita: **continuar refinando** (e o que atacar) ou **parar** (e qual versão é a melhor).
 4. Acrescente ao final do `report.md` uma seção:
 
 ```

@@ -18,6 +18,7 @@ const { data: items, error, loading } = useAsync(api.cycles)
     <div v-if="loading" class="state">Carregando…</div>
     <div v-else-if="error" class="state error">{{ error }}</div>
     <DocBrowser v-else :items="items ?? []" :selected="id" base-path="/cycles" :load="api.cycle"
+      :doc-path="(id) => `reports/ciclos/${id}.md`"
       empty="Nenhum ciclo rodado ainda. No Claude Code, dentro do projeto: /ciclo WIN$N M5 3 daytrade" />
   </main>
 </template>

@@ -8,6 +8,8 @@ const props = defineProps<{
   selected?: string
   basePath: string
   load: (id: string) => Promise<{ markdown: string }>
+  // Repo-relative path of each document, so its relative links resolve.
+  docPath: (id: string) => string
   empty: string
 }>()
 
@@ -27,7 +29,7 @@ const doc = useAsync(async () => (props.selected ? props.load(props.selected) : 
       <div v-if="!selected" class="state">Selecione um item.</div>
       <div v-else-if="doc.loading.value" class="state">Carregando…</div>
       <div v-else-if="doc.error.value" class="state error">{{ doc.error.value }}</div>
-      <Markdown v-else-if="doc.data.value" :source="doc.data.value.markdown" />
+      <Markdown v-else-if="doc.data.value" :source="doc.data.value.markdown" :path="docPath(selected)" />
     </article>
   </div>
 </template>

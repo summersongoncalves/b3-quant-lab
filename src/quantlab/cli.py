@@ -27,22 +27,41 @@ def cmd_symbols(args):
     print("\n".join(mt5_source.list_symbols(args.pattern)))
 
 
+def _fmt(ts) -> str:
+    return ts.strftime("%d/%m/%Y %H:%M") if ts.hour or ts.minute else ts.strftime("%d/%m/%Y")
+
+
+def _print_split(symbol: str, timeframe: str, full, research) -> None:
+    """User-facing summary (in Portuguese) of how a dataset is split between research and holdout."""
+    cut = store.holdout_start(symbol, timeframe)
+    days = lambda d: d.index.normalize().nunique()
+    holdout = full[full.index >= cut] if cut is not None else full.iloc[:0]
+    print(f"  Total:     {len(full):>7,} barras · {days(full):,} pregões · {_fmt(full.index[0])} até {_fmt(full.index[-1])}".replace(",", "."))
+    if len(research):
+        print(f"  Pesquisa:  {len(research):>7,} barras · {days(research):,} pregões · {_fmt(research.index[0])} até {_fmt(research.index[-1])}".replace(",", "."))
+    if len(holdout):
+        print(f"  Holdout:   {len(holdout):>7,} barras · {days(holdout):,} pregões · a partir de {_fmt(cut)} (trancado)".replace(",", "."))
+
+
 def cmd_fetch(args):
     from quantlab.data import mt5_source
     end = datetime.fromisoformat(args.end) if args.end else datetime.now()
+    first_time = store.holdout_start(args.symbol, args.timeframe) is None
     df = mt5_source.fetch(args.symbol, args.timeframe, datetime.fromisoformat(args.start), end)
     df = store.save(df, args.symbol, args.timeframe)
-    print(f"{args.symbol} {args.timeframe}: {len(df)} bars, {df.index[0]} -> {df.index[-1]}")
-    print(f"Holdout (never used in research) starts at {store.holdout_start(args.symbol, args.timeframe)}")
+    print(f"OK: {args.symbol} {args.timeframe} salvo em data/raw/")
+    _print_split(args.symbol, args.timeframe, df, store.load(args.symbol, args.timeframe))
+    if first_time:
+        print("\nO holdout foi congelado agora e nunca mais muda. Nenhum agente pode usá-lo;")
+        print("ele fica guardado para a prova final, que só roda quando você pedir.")
+    print(f"\nPróximo passo: /ciclo {args.symbol} {args.timeframe} 1 daytrade (ou swing)")
 
 
 def cmd_info(args):
     full = store.load(args.symbol, args.timeframe, include_holdout=True)
     research = store.load(args.symbol, args.timeframe)
-    print(f"bars: {len(full)} total, {len(research)} for research")
-    print(f"range: {full.index[0]} -> {full.index[-1]}")
-    print(f"holdout starts: {store.holdout_start(args.symbol, args.timeframe)}")
-    print(full.tail())
+    print(f"{args.symbol} {args.timeframe}")
+    _print_split(args.symbol, args.timeframe, full, research)
 
 
 def cmd_list(args):

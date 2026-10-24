@@ -53,3 +53,12 @@ def relative_volume(df: pd.DataFrame, days: int = 20) -> pd.Series:
     cum = df["volume"].astype(float).groupby(df.index.normalize()).cumsum()
     usual = cum.groupby(df.index.time).transform(lambda s: s.rolling(days).median().shift(1))
     return cum / usual
+
+
+def rsi_from_changes(delta: pd.Series, period: int = 2) -> pd.Series:
+    """Wilder RSI computed on a series of changes (NaN treated as 0). NaN when no movement at all."""
+    d = delta.fillna(0.0)
+    au = d.clip(lower=0).ewm(alpha=1 / period, adjust=False).mean()
+    ad = (-d).clip(lower=0).ewm(alpha=1 / period, adjust=False).mean()
+    total = au + ad
+    return (100 * au / total).where(total > 0)

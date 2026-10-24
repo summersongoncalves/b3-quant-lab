@@ -13,11 +13,16 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 
 from quantlab import strategies
-from quantlab.config import HOLDOUTS_FILE, RAW_DIR, REGISTRY_FILE, REPORTS_DIR, RESEARCH_DIR
+from quantlab.config import HOLDOUTS_FILE, RAW_DIR, REGISTRY_FILE, REPORTS_DIR, RESEARCH_DIR, ROOT
 
 app = FastAPI(title="quantlab")
 HYPOTHESES_DIR = RESEARCH_DIR / "hypotheses"
 CYCLES_DIR = REPORTS_DIR / "ciclos"
+# Files the markdown documents link to, viewable from the UI. Market data stays out.
+VIEWABLE_DIRS = ("docs", "knowledge/notas", "research", "reports", "src/quantlab", ".claude/agents", ".claude/skills")
+VIEWABLE_FILES = ("CLAUDE.md", "README.md")
+VIEWABLE_SUFFIXES = (".md", ".py", ".json", ".jsonl", ".txt")
+MAX_FILE_BYTES = 2_000_000
 
 
 def _report_dirs() -> dict[str, Path]:
@@ -165,3 +170,20 @@ def list_strategies():
                     "daytrade": s.daytrade, "params": s.params, "grid": s.grid,
                     **_strategy_labels(name)})
     return out
+
+
+@app.get("/api/files/{path:path}")
+def get_file(path: str):
+    """Any viewable text file by its repo-relative path, for links inside the markdown docs."""
+    target = (ROOT / path).resolve()
+    try:
+        rel = target.relative_to(ROOT).as_posix()
+    except ValueError:
+        raise HTTPException(404)
+    allowed = rel in VIEWABLE_FILES or any(rel.startswith(d + "/") for d in VIEWABLE_DIRS)
+    if not allowed or target.suffix not in VIEWABLE_SUFFIXES or not target.is_file():
+        raise HTTPException(404, f"{path} not found or not viewable")
+    if target.stat().st_size > MAX_FILE_BYTES:
+        raise HTTPException(413, f"{path} is too large to view")
+    return {"path": rel, "kind": "markdown" if target.suffix == ".md" else "text",
+            "content": target.read_text(encoding="utf-8", errors="replace")}

@@ -103,6 +103,12 @@ export interface StrategyInfo extends StrategyLabels {
   grid: Record<string, (string | number)[]>
 }
 
+export interface RepoFile {
+  path: string
+  kind: 'markdown' | 'text'
+  content: string
+}
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`/api${path}`)
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} em /api${path}`)
@@ -118,4 +124,5 @@ export const api = {
   cycle: (id: string) => get<{ id: string; markdown: string }>(`/cycles/${encodeURIComponent(id)}`),
   datasets: () => get<Dataset[]>('/datasets'),
   strategies: () => get<StrategyInfo[]>('/strategies'),
+  file: (path: string) => get<RepoFile>(`/files/${path.split('/').map(encodeURIComponent).join('/')}`),
 }

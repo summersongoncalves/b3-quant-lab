@@ -19,6 +19,7 @@ const { data: items, error, loading } = useAsync(api.hypotheses)
     <div v-if="loading" class="state">Carregando…</div>
     <div v-else-if="error" class="state error">{{ error }}</div>
     <DocBrowser v-else :items="items ?? []" :selected="id" base-path="/hypotheses" :load="api.hypothesis"
+      :doc-path="(id) => `research/hypotheses/${id}.md`"
       empty="Nenhuma hipótese ainda. Rode /ciclo no Claude Code para o estrategista propor a primeira.">
       <template #item="{ item }">
         <div class="title">{{ item.title }}</div>

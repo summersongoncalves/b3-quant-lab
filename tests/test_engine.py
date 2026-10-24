@@ -79,3 +79,75 @@ def test_psr_and_dsr_behave():
     assert validation.probabilistic_sharpe(0.0, 500, 0, 3) == pytest.approx(0.5)
     # More trials raise the bar a lucky strategy has to clear.
     assert validation.expected_max_sharpe(1000, 0.01) > validation.expected_max_sharpe(10, 0.01) > 0
+
+
+def bars_from(rows, start="2025-01-02 10:00"):
+    idx = pd.date_range(start, periods=len(rows), freq="5min")
+    return pd.DataFrame(rows, columns=["open", "high", "low", "close"], index=idx, dtype=float)
+
+
+def bracket(df, position, stop, target):
+    return pd.DataFrame({"position": position, "stop": stop, "target": target}, index=df.index)
+
+
+def test_without_brackets_matches_plain_series():
+    df = intraday()
+    rng = np.random.default_rng(5)
+    pos = pd.Series(rng.choice([-1.0, 0.0, 1.0], len(df)), index=df.index)
+    plain = engine.run(df, pos, WIN, daytrade=True)
+    framed = engine.run(df, bracket(df, pos, np.nan, np.nan), WIN, daytrade=True)
+    assert framed.bars["pnl"].sum() == pytest.approx(plain.bars["pnl"].sum())
+    assert len(framed.trades) == len(plain.trades)
+
+
+def test_stop_fills_at_stop_price_and_stays_flat():
+    # Long from bar 1 at 100, stop 10 below. Bar 2 trades down to 85.
+    df = bars_from([[100, 101, 99, 100], [100, 102, 98, 101], [101, 101, 85, 88], [88, 120, 88, 120]])
+    sig = bracket(df, 1.0, 10.0, np.nan)
+    res = engine.run(df, sig, WIN, daytrade=True, cost_mult=0)
+    assert res.bars["held"].tolist() == [0, 1, 1, 0]  # no re-entry on the same signal
+    assert res.trades["pnl"].sum() == pytest.approx((90 - 100) * WIN.point_value)
+    assert res.trades["exit_reason"].tolist() == ["stop"]
+
+
+def test_stop_wins_when_both_touched_in_the_same_bar():
+    df = bars_from([[100, 100, 100, 100], [100, 130, 70, 100], [100, 100, 100, 100]])
+    res = engine.run(df, bracket(df, 1.0, 10.0, 10.0), WIN, daytrade=True, cost_mult=0)
+    assert res.trades["exit_reason"].tolist() == ["stop_both"]
+    assert res.trades["pnl"].sum() == pytest.approx(-10 * WIN.point_value)
+
+
+def test_gap_through_stop_fills_at_open():
+    df = daily(5)
+    df.iloc[:] = 100.0
+    df.iloc[3] = [80.0, 81.0, 79.0, 80.0]  # opens 20 below a stop 10 below
+    res = engine.run(df, bracket(df, 1.0, 10.0, np.nan), STOCK, daytrade=False, cost_mult=0)
+    assert res.trades["pnl"].iloc[0] == pytest.approx(res.capital * (80 / 100 - 1))
+
+
+def test_short_target_and_reentry_after_signal_resets():
+    df = bars_from([[100, 100, 100, 100], [100, 101, 94, 95], [95, 96, 94, 95], [95, 96, 94, 95], [95, 96, 94, 95]])
+    pos = pd.Series([-1.0, -1.0, 0.0, -1.0, -1.0], index=df.index)
+    res = engine.run(df, bracket(df, pos, 20.0, 5.0), WIN, daytrade=True, cost_mult=0)
+    assert res.bars["held"].tolist() == [0, -1, 0, 0, -1]
+    assert res.trades["exit_reason"].tolist() == ["target", "close"]
+    assert res.trades["pnl"].iloc[0] == pytest.approx(5 * WIN.point_value)
+
+
+@pytest.mark.parametrize("daytrade", [True, False])
+def test_bracket_pnl_reconciles_and_costs_counted(daytrade):
+    df = intraday()
+    rng = np.random.default_rng(7)
+    pos = pd.Series(rng.choice([-1.0, 0.0, 1.0], len(df)), index=df.index).rolling(6).max().fillna(0)
+    res = engine.run(df, bracket(df, pos, 60.0, 90.0), WIN, daytrade=daytrade)
+    assert res.trades["pnl"].sum() == pytest.approx(res.bars["pnl"].sum())
+    assert {"target"} <= set(res.trades["exit_reason"]) and set(res.trades["exit_reason"]) & {"stop", "stop_both"}
+    # Every trade pays its entry and its exit.
+    assert res.bars["cost"].sum() == pytest.approx(2 * len(res.trades) * (WIN.fee_per_contract_daytrade if daytrade else WIN.fee_per_contract_swing) + 2 * len(res.trades) * WIN.slippage_ticks * WIN.tick_size * WIN.point_value)
+
+
+def test_lookahead_check_handles_bracket_frames():
+    peek = Strategy("peek", "stop from tomorrow", "D1", False,
+                    lambda df: pd.DataFrame({"position": 1.0, "stop": (df["close"].shift(-1) - df["close"]).abs(),
+                                             "target": np.nan}, index=df.index), params={})
+    assert validation.lookahead_check(peek, daily(), {})

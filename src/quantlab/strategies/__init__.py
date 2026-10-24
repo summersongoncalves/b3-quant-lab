@@ -3,6 +3,10 @@
 Each strategy is a module in this package exposing `STRATEGY = Strategy(...)`.
 `signal_fn(df, **params)` returns the TARGET position for each bar, in [-1, 1],
 using only data up to that bar's close. The engine executes it on the next bar.
+
+For a stop loss / take profit, return a DataFrame with columns `position`,
+`stop` and `target` instead: the two distances (price units, from the entry
+fill) are read at the signal bar and fixed for the trade. See backtest/engine.py.
 """
 
 import importlib

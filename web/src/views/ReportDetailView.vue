@@ -102,7 +102,7 @@ const topTradesShare = computed(() => {
       </div>
 
       <section v-if="r.validator_analysis" class="card section">
-        <Markdown :source="r.validator_analysis" />
+        <Markdown :source="r.validator_analysis" :path="`reports/${id}/report.md`" />
       </section>
 
       <div class="two">

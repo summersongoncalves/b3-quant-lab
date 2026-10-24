@@ -12,6 +12,7 @@ const router = createRouter({
     { path: '/cycles/:id?', component: () => import('./views/CyclesView.vue'), props: true },
     { path: '/datasets', component: () => import('./views/DatasetsView.vue') },
     { path: '/glossario', component: () => import('./views/GlossaryView.vue') },
+    { path: '/files/:path(.*)*', component: () => import('./views/FileView.vue'), props: true },
   ],
   scrollBehavior: (to, from) => (to.hash || to.path === from.path ? undefined : { top: 0 }),
 })

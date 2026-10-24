@@ -26,7 +26,9 @@ def lookahead_check(strategy: Strategy, df: pd.DataFrame, params: dict, checks: 
     start = min(len(df) // 4, 500)
     for k in np.linspace(start, len(df) - 1, checks, dtype=int):
         truncated = strategy.signals(df.iloc[: k + 1], **params)
-        if not np.isclose(truncated.iloc[-1], full.iloc[k], equal_nan=True):
+        # A row of (position, stop, target) for bracket strategies, a scalar otherwise.
+        now, later = np.atleast_1d(truncated.iloc[-1]).astype(float), np.atleast_1d(full.iloc[k]).astype(float)
+        if not np.allclose(now, later, equal_nan=True):
             problems.append(f"bar {df.index[k]}: {truncated.iloc[-1]} with data up to k vs {full.iloc[k]} with full data")
     return problems
 

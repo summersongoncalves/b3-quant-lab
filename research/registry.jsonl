@@ -28,3 +28,66 @@
 {"ts": "2026-10-23T18:55:47", "strategy": "momentum_intradiario", "dataset": "WIN_N_M5", "phase": "search", "params": {"signal_time": "16:00", "k": 0.5}, "sharpe_daily": 0.04864017785789002, "days": 716}
 {"ts": "2026-10-23T18:55:47", "strategy": "momentum_intradiario", "dataset": "WIN_N_M5", "phase": "search", "params": {"signal_time": "16:00", "k": 1.0}, "sharpe_daily": 0.08850457578372718, "days": 716}
 {"ts": "2026-10-23T18:56:03", "strategy": "momentum_intradiario", "dataset": "WIN_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.10142006726458196, "days": 636}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "12:00", "k": 1.0}, "sharpe_daily": -0.005695639134966094, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "12:00", "k": 1.5}, "sharpe_daily": 0.015503222310225849, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "12:00", "k": 2.0}, "sharpe_daily": 0.02134486054996689, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "13:00", "k": 1.0}, "sharpe_daily": -0.0594564510681465, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "13:00", "k": 1.5}, "sharpe_daily": -0.03521463434016043, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "13:00", "k": 2.0}, "sharpe_daily": -0.01201804134151428, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "14:00", "k": 1.0}, "sharpe_daily": -0.03929929949101769, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "14:00", "k": 1.5}, "sharpe_daily": -0.011000738605352391, "days": 761}
+{"ts": "2026-10-23T19:52:35", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "search", "params": {"signal_time": "14:00", "k": 2.0}, "sharpe_daily": 0.01749659342964516, "days": 761}
+{"ts": "2026-10-23T19:53:14", "strategy": "momentum_vwap_volume", "dataset": "BBAS3_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.004123024529862624, "days": 681}
+{"ts": "2026-10-23T20:30:13", "strategy": "momentum_vwap_bracket", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.3}, "sharpe_daily": -0.10177604049107404, "days": 761}
+{"ts": "2026-10-23T20:30:13", "strategy": "momentum_vwap_bracket", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.4}, "sharpe_daily": -0.10953240749537013, "days": 761}
+{"ts": "2026-10-23T20:30:13", "strategy": "momentum_vwap_bracket", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.5}, "sharpe_daily": -0.12171420374661793, "days": 761}
+{"ts": "2026-10-23T20:30:30", "strategy": "momentum_vwap_bracket", "dataset": "VBBR3_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.11252083196668111, "days": 681}
+{"ts": "2026-10-23T20:38:08", "strategy": "reversao_esticamento_vwap", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.25}, "sharpe_daily": -0.03680165426310247, "days": 761}
+{"ts": "2026-10-23T20:38:08", "strategy": "reversao_esticamento_vwap", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.35}, "sharpe_daily": -0.00697035956217884, "days": 761}
+{"ts": "2026-10-23T20:38:08", "strategy": "reversao_esticamento_vwap", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.5}, "sharpe_daily": -0.017906095371372367, "days": 761}
+{"ts": "2026-10-23T20:38:18", "strategy": "reversao_esticamento_vwap", "dataset": "VBBR3_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.03709918427337499, "days": 681}
+{"ts": "2026-10-23T20:45:23", "strategy": "falso_rompimento_20d", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.3}, "sharpe_daily": -0.061725958124822816, "days": 761}
+{"ts": "2026-10-23T20:45:23", "strategy": "falso_rompimento_20d", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.4}, "sharpe_daily": -0.04878533359927076, "days": 761}
+{"ts": "2026-10-23T20:45:23", "strategy": "falso_rompimento_20d", "dataset": "VBBR3_M5", "phase": "search", "params": {"stop_mult": 0.5}, "sharpe_daily": -0.06081600276237013, "days": 761}
+{"ts": "2026-10-23T20:45:33", "strategy": "falso_rompimento_20d", "dataset": "VBBR3_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.06534100847248109, "days": 681}
+{"ts": "2026-10-23T21:01:46", "strategy": "reteste_abertura", "dataset": "WIN_N_M5", "phase": "search", "params": {"stop_mult": 0.2}, "sharpe_daily": 0.061305931695060246, "days": 716}
+{"ts": "2026-10-23T21:01:46", "strategy": "reteste_abertura", "dataset": "WIN_N_M5", "phase": "search", "params": {"stop_mult": 0.25}, "sharpe_daily": 0.07129220626401923, "days": 716}
+{"ts": "2026-10-23T21:01:46", "strategy": "reteste_abertura", "dataset": "WIN_N_M5", "phase": "search", "params": {"stop_mult": 0.3}, "sharpe_daily": 0.05638368112730461, "days": 716}
+{"ts": "2026-10-23T21:01:54", "strategy": "reteste_abertura", "dataset": "WIN_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.0756582388337639, "days": 636}
+{"ts": "2026-10-23T21:34:14", "strategy": "direcao_do_dia", "dataset": "WIN_N_M5", "phase": "search", "params": {}, "sharpe_daily": 0.06002987662071813, "days": 716}
+{"ts": "2026-10-23T21:34:18", "strategy": "direcao_do_dia", "dataset": "WIN_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.08432249545339039, "days": 636}
+{"ts": "2026-10-23T21:55:01", "strategy": "direcao_do_dia", "dataset": "WDO_N_M5", "phase": "search", "params": {}, "sharpe_daily": -0.08024584831567849, "days": 709}
+{"ts": "2026-10-23T21:55:05", "strategy": "direcao_do_dia", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.07375994744477367, "days": 629}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.05, "b": 0.05}, "sharpe_daily": -0.10779951662006568, "days": 709}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.05, "b": 0.1}, "sharpe_daily": -0.10277624462482772, "days": 709}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.1, "b": 0.05}, "sharpe_daily": -0.11692912145649807, "days": 709}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.1, "b": 0.1}, "sharpe_daily": -0.10191290859045615, "days": 709}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.15, "b": 0.05}, "sharpe_daily": -0.056897915598812916, "days": 709}
+{"ts": "2026-10-23T22:41:22", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "search", "params": {"e": 0.15, "b": 0.1}, "sharpe_daily": -0.05079017493049621, "days": 709}
+{"ts": "2026-10-23T22:41:39", "strategy": "falha_balanco_inicial", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.08248388700975956, "days": 629}
+{"ts": "2026-10-23T22:49:22", "strategy": "fechamento_gap", "dataset": "WDO_N_M5", "phase": "search", "params": {"g_min": 0.15, "b": 0.1, "g_max": 0.8}, "sharpe_daily": -0.07003988350072322, "days": 709}
+{"ts": "2026-10-23T22:49:22", "strategy": "fechamento_gap", "dataset": "WDO_N_M5", "phase": "search", "params": {"g_min": 0.15, "b": 0.15, "g_max": 0.8}, "sharpe_daily": -0.05721009600297863, "days": 709}
+{"ts": "2026-10-23T22:49:22", "strategy": "fechamento_gap", "dataset": "WDO_N_M5", "phase": "search", "params": {"g_min": 0.25, "b": 0.1, "g_max": 0.8}, "sharpe_daily": -0.04689738216838071, "days": 709}
+{"ts": "2026-10-23T22:49:22", "strategy": "fechamento_gap", "dataset": "WDO_N_M5", "phase": "search", "params": {"g_min": 0.25, "b": 0.15, "g_max": 0.8}, "sharpe_daily": -0.03794844756766805, "days": 709}
+{"ts": "2026-10-23T22:49:36", "strategy": "fechamento_gap", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.07713611887146, "days": 629}
+{"ts": "2026-10-23T22:58:05", "strategy": "rompimento_extremo_anterior", "dataset": "WDO_N_M5", "phase": "search", "params": {"b": 0.15, "k": 1.5, "over_max": 0.15}, "sharpe_daily": -0.0007944797947210574, "days": 709}
+{"ts": "2026-10-23T22:58:05", "strategy": "rompimento_extremo_anterior", "dataset": "WDO_N_M5", "phase": "search", "params": {"b": 0.2, "k": 1.5, "over_max": 0.15}, "sharpe_daily": 0.00042987203252048336, "days": 709}
+{"ts": "2026-10-23T22:58:05", "strategy": "rompimento_extremo_anterior", "dataset": "WDO_N_M5", "phase": "search", "params": {"b": 0.25, "k": 1.5, "over_max": 0.15}, "sharpe_daily": -0.0038243827177697853, "days": 709}
+{"ts": "2026-10-23T22:58:13", "strategy": "rompimento_extremo_anterior", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.0020394653198239987, "days": 629}
+{"ts": "2026-10-23T23:06:37", "strategy": "recuo_vwap_tendencia_semanal", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "k": 1.5, "z0": 0.5}, "sharpe_daily": -0.10659361542901047, "days": 709}
+{"ts": "2026-10-23T23:06:37", "strategy": "recuo_vwap_tendencia_semanal", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.25, "k": 1.5, "z0": 0.5}, "sharpe_daily": -0.06855882677266617, "days": 709}
+{"ts": "2026-10-23T23:06:37", "strategy": "recuo_vwap_tendencia_semanal", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.3, "k": 1.5, "z0": 0.5}, "sharpe_daily": -0.08320922234057623, "days": 709}
+{"ts": "2026-10-23T23:06:45", "strategy": "recuo_vwap_tendencia_semanal", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.0924999491771563, "days": 629}
+{"ts": "2026-10-23T23:14:54", "strategy": "defasagem_dolar_bolsa", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "k": 0.3, "m": 0.2}, "sharpe_daily": 0.0204106193019388, "days": 709}
+{"ts": "2026-10-23T23:14:54", "strategy": "defasagem_dolar_bolsa", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.25, "k": 0.3, "m": 0.2}, "sharpe_daily": 0.018428818196021473, "days": 709}
+{"ts": "2026-10-23T23:14:54", "strategy": "defasagem_dolar_bolsa", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.3, "k": 0.3, "m": 0.2}, "sharpe_daily": 0.04001688378689566, "days": 709}
+{"ts": "2026-10-23T23:15:10", "strategy": "defasagem_dolar_bolsa", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": 0.038438539396268276, "days": 629}
+{"ts": "2026-10-23T23:23:24", "strategy": "reversao_rsi2_diario", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.25, "k": 1.5, "lim": 10.0}, "sharpe_daily": -0.005546455757811519, "days": 709}
+{"ts": "2026-10-23T23:23:24", "strategy": "reversao_rsi2_diario", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.3, "k": 1.5, "lim": 10.0}, "sharpe_daily": -0.02327949012658771, "days": 709}
+{"ts": "2026-10-23T23:23:24", "strategy": "reversao_rsi2_diario", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.35, "k": 1.5, "lim": 10.0}, "sharpe_daily": -0.04874885330069566, "days": 709}
+{"ts": "2026-10-23T23:23:32", "strategy": "reversao_rsi2_diario", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.026765847750893107, "days": 629}
+{"ts": "2026-10-23T23:31:55", "strategy": "rompimento_ruido_conjunto", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "faixa": 14, "horizonte": 24}, "sharpe_daily": -0.008201502654919965, "days": 709}
+{"ts": "2026-10-23T23:31:55", "strategy": "rompimento_ruido_conjunto", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.25, "faixa": 14, "horizonte": 24}, "sharpe_daily": 0.010287821659561573, "days": 709}
+{"ts": "2026-10-23T23:32:10", "strategy": "rompimento_ruido_conjunto", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.006958358544275064, "days": 629}
+{"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.15, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.09840834383550355, "days": 709}
+{"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.08633083365986477, "days": 709}
