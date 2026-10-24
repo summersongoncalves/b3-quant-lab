@@ -91,3 +91,4 @@
 {"ts": "2026-10-23T23:32:10", "strategy": "rompimento_ruido_conjunto", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.006958358544275064, "days": 629}
 {"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.15, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.09840834383550355, "days": 709}
 {"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.08633083365986477, "days": 709}
+{"ts": "2026-10-23T23:42:00", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.07115027676298438, "days": 629}

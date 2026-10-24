@@ -2,7 +2,7 @@
 - Dataset: WDO$N M5
 - Modo: daytrade
 - Estilo: momentum
-- Estado: proposta
+- Estado: REJEITADA
 
 ## Padrão
 Quando uma barra de 5 minutos do WDO é ao mesmo tempo **muito larga** e de **volume muito alto** para aquele horário, e fecha no extremo dela, o mercado mostrou esforço (volume) com resultado (amplitude e fechamento a favor). Pela leitura de Wyckoff, isso é sinal de força (SOS) ou de fraqueza (SOW), e não absorção. Esperamos que o dólar continue no lado do fechamento da barra na hora seguinte com mais frequência que a geometria neutra.
@@ -102,3 +102,4 @@ Exploração feita (só descritiva, sem P&L, sem retorno ou MAE/MFE por lado; sc
 - Coluna de volume: `volume` do Parquet.
 - Saída por tempo: a posição fica no lado do sinal nas barras t..t+11 e vale 0 a partir de t+12 no mesmo pregão. Com entrada na abertura de t+1 e saída na abertura de t+13, o trade dura 12 barras. Stop e alvo ficam constantes nas barras em que a posição está ligada e NaN depois.
 - Contagem esperada: ~243 entradas (igual à exploração), antes do motor tirar os dias sem barra seguinte.
+Relatório: reports/20261023-234200_choque_esforco_resultado_WDO_N_M5
