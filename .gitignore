@@ -12,3 +12,6 @@ research/scratch/
 
 # Generated charts; the markdown/json reports are committed.
 reports/**/*.png
+
+# repos de terceiros baixados só para leitura/estudo
+external/

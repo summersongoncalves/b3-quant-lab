@@ -92,3 +92,15 @@
 {"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.15, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.09840834383550355, "days": 709}
 {"ts": "2026-10-23T23:41:49", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "search", "params": {"s": 0.2, "k": 2.5, "horizonte": 12}, "sharpe_daily": -0.08633083365986477, "days": 709}
 {"ts": "2026-10-23T23:42:00", "strategy": "choque_esforco_resultado", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.07115027676298438, "days": 629}
+{"ts": "2026-11-09T19:11:10", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 1.0, "no_entry_last_min": 30}, "sharpe_daily": -0.08211376116779244, "days": 716}
+{"ts": "2026-11-09T19:11:10", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 2.0, "no_entry_last_min": 30}, "sharpe_daily": -0.05696589398122384, "days": 716}
+{"ts": "2026-11-09T19:11:16", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.05714730725518355, "days": 636}
+{"ts": "2026-11-09T19:11:22", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 1.0, "no_entry_last_min": 30}, "sharpe_daily": -0.05159588599268396, "days": 709}
+{"ts": "2026-11-09T19:11:22", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 2.0, "no_entry_last_min": 30}, "sharpe_daily": -0.0761695903776891, "days": 709}
+{"ts": "2026-11-09T19:11:27", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.04609182179855227, "days": 629}
+{"ts": "2026-11-09T19:12:45", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 1.0, "no_entry_last_min": 30}, "sharpe_daily": -0.08272188460853362, "days": 716}
+{"ts": "2026-11-09T19:12:45", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 2.0, "no_entry_last_min": 30}, "sharpe_daily": -0.05792882081673662, "days": 716}
+{"ts": "2026-11-09T19:12:52", "strategy": "skill_orb", "dataset": "WIN_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.05714730725518355, "days": 636}
+{"ts": "2026-11-09T19:13:00", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 1.0, "no_entry_last_min": 30}, "sharpe_daily": -0.05065348353562522, "days": 709}
+{"ts": "2026-11-09T19:13:00", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "search", "params": {"range_bars": 3, "target_r": 2.0, "no_entry_last_min": 30}, "sharpe_daily": -0.07545117785811721, "days": 709}
+{"ts": "2026-11-09T19:13:07", "strategy": "skill_orb", "dataset": "WDO_N_M5", "phase": "walkforward", "params": {"walk_forward": true}, "sharpe_daily": -0.055904525981230746, "days": 629}
